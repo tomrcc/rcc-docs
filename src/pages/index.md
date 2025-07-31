@@ -1,7 +1,7 @@
 ---
 _schema: page
 permalink: /
-title: Welcome 👋
+title: Rosey CloudCannon Connector
 layout: layouts/page.html
 eleventyNavigation:
   key: Home
@@ -13,36 +13,33 @@ SEO_options:
   description:
 draft: false
 ---
-Alto is a minimal and modern Eleventy theme for static documentation sites, created by and optimized for <a href="https://cloudcannon.com" target="_blank" rel="noopener">CloudCannon</a>.
 
-Designed initially for open-source software, Alto has many built-in features to aid both site users and documentation writers:
+The Rosey CloudCannon Connector provides a way for non-technical editors to create and edit the `locales/*.json` files that [Rosey](https://rosey.app/) uses to generate a multilingual site. 
 
-* Built-in static search with <a href="https://pagefind.app" target="_blank" rel="noopener">Pagefind</a>;
 
-* Eleven pre-configured shortcodes, including diff syntax highlighting, GitHub Gist embeds, and tree diagram formatter;
+Translations are displayed to editors in a form-like interface.
 
-* Light/dark modes, with configurable color palettes;
 
-* Easily configurable navigation and footer content;
+![Screenshot of editing interface in CloudCannon](/assets/images/screenshot-editing.png)
 
-* Flexible grouping options for docs pages;
 
-* Automatic anchor links to subheadings;
+## How it works
 
-* Optional announcement banner;
+1. A developer tags HTML elements on your site for translation using `data-rosey` tags.
 
-* Styled with Sass;&nbsp;
+2. Rosey scans your built static site for `data-rosey` tags and generates a JSON file named `base.json`, containing information about your all of your tagged content.
 
-* Optimized for editing and publishing on CloudCannon.
+3. The Rosey CloudCannon Connector generates YAML files which are displayed to editors in the CMS. Editors fill in translations.
 
-To get started with Alto, create a CloudCannon account and check out the [Getting Started documentation](/docs/).
+4. These YAML files are turned into the `locales/*.json` files which Rosey needs to generate the multilingual site.
 
-## Showcase
+3. Rosey ingests the `locales/*.json` files, which contain original phrases paired with user entered translations. Using this data, and your tagged content, Rosey generates a complete multilingual site.
 
-CloudCannon uses Alto as the documentation site template for our own open-source tools. Take a look at these sample sites to see what's possible with static documentation on Alto:&nbsp;
 
-* <a href="https://pagefind.app/" target="_blank" rel="noopener">Pagefind</a>
+All of this generation of files happens in your site's postbuild, meaning it happens automatically each build.
 
-* <a href="https://rosey.app/" target="_blank" rel="noopener">Rosey</a>
 
-* <a href="https://reseed.app/" target="_blank" rel="noopener">Reseed</a>
+## Is this workflow right for you?
+
+
+Depending on your usecase this workflow could be unnecessary, and you would be better suited to simply dividing your different language content into separate directories and maintaining each separately. Read [this blog post](https://cloudcannon.com/blog/managing-multilingual-content-in-cloudcannon/) before getting starting with the RCC. 
